@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-custom {
+            background-image: url('/images/back1.jpg'); 
+            background-size: cover;
+            height: 100vh; 
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .create-account-button {
+            font-size: 0.875rem; /* Small font size */
+            padding: 0.5rem 1rem; /* Small padding */
+            margin-top: 1rem; /* Space above the button */
+            display: block; /* Block to be on its own line */
+            text-align: center; /* Center text */
+            color: white; /* Text color */
+            background-color: #4a90e2; /* Background color */
+            border: none; /* Remove border */
+            border-radius: 0.375rem; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s; /* Smooth background color transition */
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                const emailInput = document.querySelector('input[name="email"]');
+                const emailValue = emailInput.value;
+                const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+                if (!gmailPattern.test(emailValue)) {
+                    alert('Please enter a valid Gmail address.');
+                    e.preventDefault(); 
+                }
+            });
+        });
+    </script>
+</head>
+<body class="bg-custom">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md border border-gray-600 overlay">
+            <h1 class="text-white text-4xl pb-5 text-center font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent shadow-md">
+                Log In
+            </h1>
+            <form action="/login" method="post" class="flex flex-col gap-4">
+                <input class="px-3 py-2 rounded-md outline-none bg-gray-100 text-gray-800 placeholder-gray-600" type="email" name="email" placeholder="Email" required>
+                <input class="px-3 py-2 rounded-md outline-none bg-gray-100 text-gray-800 placeholder-gray-600" type="password" name="password" placeholder="Password" required>
+                <input class="px-3 py-2 rounded-md bg-blue-600 text-white cursor-pointer hover:bg-blue-700" type="submit" value="Log In">
+                <a href="/" class="bg-#357abd flex justify-center text-zinc-400">Create Acoount</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
